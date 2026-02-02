@@ -6,8 +6,8 @@ from src.frontend.ui import create_ui
 load_dotenv()
 
 # Configuration
-# Default to 7880 if not specified in env
-SERVER_PORT = int(os.getenv("GRADIO_SERVER_PORT", 7880))
+# Cloud Run injects 'PORT', defaulting to 8080. Fallback to GRADIO_SERVER_PORT or 7880 for local.
+SERVER_PORT = int(os.getenv("PORT", os.getenv("GRADIO_SERVER_PORT", 7880)))
 SERVER_NAME = os.getenv("GRADIO_SERVER_NAME", "0.0.0.0")
 
 if __name__ == "__main__":
