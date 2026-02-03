@@ -23,6 +23,5 @@ if __name__ == "__main__":
     app.launch(
         server_name=SERVER_NAME,
         server_port=SERVER_PORT,
-        auth=auth,
-        show_api=False
+        auth=auth
     )

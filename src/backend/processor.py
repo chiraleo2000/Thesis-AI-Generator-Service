@@ -58,7 +58,7 @@ def process_document_ai(file_path):
             image_content = image.read()
 
         # Simple determination of mime type
-        mime_type = "application/pdf" if file_path.endswith(".pdf") else "image/png"
+        mime_type = "application/pdf" if file_path.lower().endswith(".pdf") else "image/png"
         
         raw_document = documentai.RawDocument(content=image_content, mime_type=mime_type)
         request = documentai.ProcessRequest(name=name, raw_document=raw_document)

@@ -17,6 +17,7 @@ def create_ui():
         
         # State variables
         current_username = gr.State("")
+        context_state = gr.State("") # To hold the extracted text context
 
         # --- Authentication Screens ---
         with gr.Group(visible=True) as auth_group:
@@ -54,7 +55,7 @@ def create_ui():
                     p1_status = gr.Textbox(label="Processing Log", lines=4)
                     p1_files = gr.JSON(label="Indexed Knowledge Base")
                     
-                    p1_btn.click(phase1_process_files, inputs=[file_input, current_username], outputs=[p1_status, p1_files, gr.State()])
+                    p1_btn.click(phase1_process_files, inputs=[file_input, current_username], outputs=[p1_status, p1_files, context_state])
 
                 # Phase 2
                 with gr.TabItem("2. Outline"):
@@ -63,7 +64,7 @@ def create_ui():
                     p2_btn = gr.Button("Generate Outline", variant="primary")
                     outline_output = gr.Code(label="Thesis Structure", language="markdown", lines=15, interactive=True)
                     
-                    p2_btn.click(phase2_generate_outline, inputs=[topic_input, p1_status, current_username], outputs=[outline_output])
+                    p2_btn.click(phase2_generate_outline, inputs=[topic_input, context_state, current_username], outputs=[outline_output])
 
                 # Phase 3
                 with gr.TabItem("3. Synthesis"):
