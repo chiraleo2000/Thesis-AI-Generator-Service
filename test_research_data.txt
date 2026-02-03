@@ -1,0 +1,8 @@
+Thesis Topic: Physics of Arm Robots and Movement
+
+Research Data:
+- Kinematics of robotic arms
+- Inverse kinematics formulas
+- Dynamics and torque control
+- Path planning algorithms (RRT, A*)
+- Latest research on soft robotics arms
